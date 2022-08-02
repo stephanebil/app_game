@@ -33,12 +33,18 @@ session_start();
         <?php
         // Je vérifie que session error est vide ou pas
         if ($_SESSION["error"]) { ?>
-            <div class="bg-red-400 text-white">
+            <div class="bg-red-400 text-white py-6">
                 <?= $_SESSION["error"] ?>
             </div>
-        <?php } 
+        <?php } elseif ($_SESSION["success"]) { ?>
+            <div class="bg-green-400 text-white py-6">
+                <?= $_SESSION["success"] ?>;
+            </div>
+        <?php }
         // Je vide ma variable $_SESSION["error"] pour qu'il n'affihe pas de message en créant un array vide
-        $_SESSION["error"] = []; ?>
+        $_SESSION["error"] = [];
+        $_SESSION["success"] = []; 
+        ?>
         
     </div>
     

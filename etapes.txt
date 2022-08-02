@@ -6,4 +6,4 @@
 6- Je crée mon projet PHP et publie sur GITHUB
 7- Je code mon templates (je commence à coder mon site (header footer index etc...))
 8- Je me connecte à ma BDD avec le méthode PDO (conseillé). créer un fichier pdo.ph dans helpers
-9- On récupère les données de la BDD.
+9- On récupère les données de la BDD avec SELECT * FROM mytable.

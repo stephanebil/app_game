@@ -1,5 +1,7 @@
 <!-- header -->
 <?php
+// on démarre la session ici
+session_start();
   $title = "Accueil"; // title for current page
   include('partials/_header.php'); //include header
   include('helpers/functions.php'); //include function
@@ -27,6 +29,17 @@
     <div class=" wrap_content-head text-center">
         <h1 class="text-blue-500 text-5xl text-center uppercase font-black"> App game</h1>
         <p>L'app qui répertorie vos jeux</p>
+        
+        <?php
+        // Je vérifie que session error est vide ou pas
+        if ($_SESSION["error"]) { ?>
+            <div class="bg-red-400 text-white">
+                <?= $_SESSION["error"] ?>
+            </div>
+        <?php } 
+        // Je vide ma variable $_SESSION["error"] pour qu'il n'affihe pas de message en créant un array vide
+        $_SESSION["error"] = []; ?>
+        
     </div>
     
     <!-- table -->
@@ -60,12 +73,13 @@
                         <td><?= $game['price'] ?></td>
                         <td><?= $game['PEGI'] ?></td>
                         <td>
-                            <a href="show.php"> 
+                            <a href="show.php?id=<?=$game['id'] ?>&name=<?= $game['name']?>&genre=<?= $game['genre']?>"> 
                                 <img src="img/loupe.png" alt="loupe" class="w-4">
                             </a>
                         </td>
                     </tr>
                     <?php endforeach ?>
+                    <!-- http://localhost/php/app_game/show.php -->
                 <?php } ?>
                         
                     

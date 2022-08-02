@@ -4,6 +4,9 @@
   include('partials/_header.php');
     // petit rappel: La combinaison en dessous permet de voir le lien parfait 
   //   echo $_SERVER['PHP_SELF']
+
+    // inclure PDO (pdo.php) pour la connexion à la BDD dans mon script
+    require_once("helpers/pdo.php")   
 ?>
     
 <!-- main content -->
@@ -38,7 +41,10 @@
                     <td>Switch</td>
                     <td>33.99</td>
                     <td>3</td>
-                    <td> <img src="img/loupe.png" alt="loupe" class="w-4"></td>
+                    <td>
+                        <a href="show.php"> 
+                            <img src="img/loupe.png" alt="loupe" class="w-4"></td>
+                        </a>
                  </tr>
       
             </tbody>
@@ -49,4 +55,6 @@
 <!-- end main content -->
 
 <!-- footer -->
-<?php include('partials/_footer.php') ?>
+<?php 
+    include('partials/_footer.php') //include footer
+?> 

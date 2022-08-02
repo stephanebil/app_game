@@ -3,6 +3,6 @@
 3- Je crée ma table.
 4- Je crée mes colonnes (champs) => ne pas oublie id en auto-increment (très important)
 5- J'insère 1 ou 2 entrée
-6- Je crée mon projet PHP.
+6- Je crée mon projet PHP et publie sur GITHUB
 7- Je code mon templates (je commence à coder mon site (header footer index etc...))
-8- Je me connecte à ma BDD.
+8- Je me connecte à ma BDD avec le méthode PDO (conseillé). créer un fichier pdo.ph dans helpers

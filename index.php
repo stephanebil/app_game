@@ -1,12 +1,24 @@
 <!-- header -->
 <?php
   $title = "Accueil"; // title for current page
-  include('partials/_header.php');
+  include('partials/_header.php'); //include header
+  include('helpers/functions.php'); //include function
     // petit rappel: La combinaison en dessous permet de voir le lien parfait 
   //   echo $_SERVER['PHP_SELF']
 
     // inclure PDO (pdo.php) pour la connexion à la BDD dans mon script
-    require_once("helpers/pdo.php")   
+    require_once("helpers/pdo.php");
+    
+    // 1- Requête pour récupérer mes jeux / Query to get all games
+    $sql =  "SELECT * FROM  jeux"; //si l'on veut plus spécifique on remplace * par name, genre...
+    // 2- Prépare la requête (preformater la requête)
+    $query = $pdo->prepare($sql);
+    // 3- execute ma requête
+    $query->execute();
+    // 4- On stocke ma requête dans une variable / stock my query in variable
+    $games = $query->fetchAll();
+    // debug_array($games); //affiche le tabelau avec tous les objets
+
 ?>
     
 <!-- main content -->
@@ -33,8 +45,34 @@
                 </tr>
             </thead>
             <tbody>
+                
+                    
+                <?php 
+                if(count($games) == 0 ) {
+                    echo"<tr><td class='text-center'>Pas de jeux disponibles actuellement</td></tr>";
+                } else { ?>
+                    <?php foreach($games as $game): ?>
+                    <tr>
+                        <th><?= $game['id'] ?></th>
+                        <td><?= $game['name'] ?></td>
+                        <td><?= $game['genre'] ?></td>
+                        <td><?= $game['plateforms'] ?></td>
+                        <td><?= $game['price'] ?></td>
+                        <td><?= $game['PEGI'] ?></td>
+                        <td>
+                            <a href="show.php"> 
+                                <img src="img/loupe.png" alt="loupe" class="w-4">
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                <?php } ?>
+                        
+                    
+                
+            
             <!-- row 1 -->
-                <tr>
+                <!-- <tr>
                     <th>1</th>
                     <td>Mario</td>
                     <td>Plateforme</td>
@@ -43,9 +81,10 @@
                     <td>3</td>
                     <td>
                         <a href="show.php"> 
-                            <img src="img/loupe.png" alt="loupe" class="w-4"></td>
+                            <img src="img/loupe.png" alt="loupe" class="w-4">
                         </a>
-                 </tr>
+                    </td>
+                 </tr> -->
       
             </tbody>
         </table>

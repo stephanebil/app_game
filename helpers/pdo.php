@@ -11,12 +11,12 @@ try {
         // Ne pas récupérer les élements dupliqués (qui sont en double)
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         // Pour afficher les errors 
-        PDO::ATTR_ERRMODE=> PDO::ERRMODE_WARNING
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
     ));
     // affiche un message ok connexion
-    echo "Connexion établie !";
+    // echo "Connexion établie !";
 
 
 } catch (PDOException $e) {
-   echo "Erreur de connexion: ". $e->getMessage(); 
+   echo "Erreur de connexion: ".$e->getMessage(); 
 }

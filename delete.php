@@ -7,7 +7,7 @@ include('helpers/functions.php'); //include function
 // inclure PDO (pdo.php) pour la connexion à la BDD dans mon script
 require_once("helpers/pdo.php");
 
-// 2- Je récupère id dans URL 
+// 2- Je récupère id dans URL et je nettoie
 $id = clear_xss($_GET["id"]);
 
 // 3- requête vers BDD

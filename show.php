@@ -40,7 +40,8 @@
     }
 ?>
 
-<div class="pt-16">
+<!-- main content -->
+<main class="pt-16">
     <h1 class="text-blue-500 text-5xl text-center uppercase font-black"><?= $game["name"] ?></h1>
     <p class="pt-4"><?= $game["description"] ?></p>
     <div class="pt-6 flex space-x-4">
@@ -49,7 +50,8 @@
         <p>Note: <?= $game["note"] ?>/10</p>
     </div>
     <a href="delete.php?id=<?= $game["id"] ?>&name=<?=$game["name"] ?>" class="btn btn-error text-white">Supprimer le jeu</a>
-</div>
+</main>
+<!-- end main content -->
 
 <!-- footer -->
 <?php 

@@ -30,6 +30,13 @@ session_start();
         <h1 class="text-blue-500 text-5xl text-center uppercase font-black"> App game</h1>
         <p>L'app qui répertorie vos jeux</p>
         
+        <!-- ajouter un jeu button for add game-->
+        <div class="pt-4">
+            <a href="addGame.php" class="btn bg-primary-500" >Add Game</a>
+        </div>
+
+
+
         <?php
         // Je vérifie que session error est vide ou pas
         if ($_SESSION["error"]) { ?>
@@ -38,7 +45,7 @@ session_start();
             </div>
         <?php } elseif ($_SESSION["success"]) { ?>
             <div class="bg-green-400 text-white py-6">
-                <?= $_SESSION["success"] ?>;
+                <?= $_SESSION["success"]; ?>
             </div>
         <?php }
         // Je vide ma variable $_SESSION["error"] pour qu'il n'affihe pas de message en créant un array vide
@@ -64,48 +71,27 @@ session_start();
                 </tr>
             </thead>
             <tbody>
-                
-                    
                 <?php 
-                if(count($games) == 0 ) {
-                    echo"<tr><td class='text-center'>Pas de jeux disponibles actuellement</td></tr>";
-                } else { ?>
-                    <?php foreach($games as $game): ?>
-                    <tr>
-                        <th><?= $game['id'] ?></th>
-                        <td><?= $game['name'] ?></td>
-                        <td><?= $game['genre'] ?></td>
-                        <td><?= $game['plateforms'] ?></td>
-                        <td><?= $game['price'] ?></td>
-                        <td><?= $game['PEGI'] ?></td>
-                        <td>
-                            <a href="show.php?id=<?=$game['id'] ?>&name=<?= $game['name']?>&genre=<?= $game['genre']?>"> 
-                                <img src="img/loupe.png" alt="loupe" class="w-4">
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach ?>
+                    if(count($games) == 0 ) {
+                        echo"<tr><td class='text-center'>Pas de jeux disponibles actuellement</td></tr>";
+                    } else { ?>
+                        <?php foreach($games as $game): ?>
+                        <tr>
+                            <th><?= $game['id'] ?></th>
+                            <td><?= $game['name'] ?></td>
+                            <td><?= $game['genre'] ?></td>
+                            <td><?= $game['plateforms'] ?></td>
+                            <td><?= $game['price'] ?></td>
+                            <td><?= $game['PEGI'] ?></td>
+                            <td>
+                                <a href="show.php?id=<?=$game['id'] ?>&name=<?= $game['name']?>&genre=<?= $game['genre']?>"> 
+                                    <img src="img/loupe.png" alt="loupe" class="w-4">
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach ?>
                     <!-- http://localhost/php/app_game/show.php -->
                 <?php } ?>
-                        
-                    
-                
-            
-            <!-- row 1 -->
-                <!-- <tr>
-                    <th>1</th>
-                    <td>Mario</td>
-                    <td>Plateforme</td>
-                    <td>Switch</td>
-                    <td>33.99</td>
-                    <td>3</td>
-                    <td>
-                        <a href="show.php"> 
-                            <img src="img/loupe.png" alt="loupe" class="w-4">
-                        </a>
-                    </td>
-                 </tr> -->
-      
             </tbody>
         </table>
     </div>
